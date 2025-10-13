@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .kalkulator {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .layar {
+      width: 240px;
+      height: 50px;
+      background: #fff;
+      border: none;
+      text-align: right;
+      padding: 10px;
+      font-size: 24px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tombol {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .tombol:hover {
+      background-color: #666;
+    }
+
+    .operator {
+      background-color: #ff9500;
+    }
+
+    .operator:hover {
+      background-color: #e08900;
+    }
+
+    .sama {
+      background-color: #007aff;
+    }
+
+    .sama:hover {
+      background-color: #0062cc;
+    }
+
+    .hapus {
+      background-color: #ff3b30;
+    }
+
+    .hapus:hover {
+      background-color: #d9342a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="kalkulator">
+    <input type="text" id="layar" class="layar" disabled>
+
+    <div>
+      <button class="tombol hapus" onclick="hapusLayar()">C</button>
+      <button class="tombol operator" onclick="inputSimbol('/')">÷</button>
+      <button class="tombol operator" onclick="inputSimbol('*')">×</button>
+      <button class="tombol operator" onclick="hapusSatu()">⌫</button>
+    </div>
+    <div>
+      <button class="tombol" onclick="inputAngka('7')">7</button>
+      <button class="tombol" onclick="inputAngka('8')">8</button>
+      <button class="tombol" onclick="inputAngka('9')">9</button>
+      <button class="tombol operator" onclick="inputSimbol('-')">−</button>
+    </div>
+    <div>
+      <button class="tombol" onclick="inputAngka('4')">4</button>
+      <button class="tombol" onclick="inputAngka('5')">5</button>
+      <button class="tombol" onclick="inputAngka('6')">6</button>
+      <button class="tombol operator" onclick="inputSimbol('+')">+</button>
+    </div>
+    <div>
+      <button class="tombol" onclick="inputAngka('1')">1</button>
+      <button class="tombol" onclick="inputAngka('2')">2</button>
+      <button class="tombol" onclick="inputAngka('3')">3</button>
+      <button class="tombol sama" onclick="hitung()">=</button>
+    </div>
+    <div>
+      <button class="tombol" onclick="inputAngka('0')">0</button>
+      <button class="tombol" onclick="inputAngka('.')">.</button>
+    </div>
+  </div>
+
+  <script>
+    let layar = document.getElementById('layar');
+
+    function inputAngka(angka) {
+      layar.value += angka;
+    }
+
+    function inputSimbol(simbol) {
+      layar.value += simbol;
+    }
+
+    function hapusLayar() {
+      layar.value = '';
+    }
+
+    function hapusSatu() {
+      layar.value = layar.value.slice(0, -1);
+    }
+
+    function hitung() {
+      try {
+        layar.value = eval(layar.value);
+      } catch {
+        layar.value = 'Error';
+      }
+    }
+  </script>
+
+</body>
+</html>
